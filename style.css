@@ -1,0 +1,125 @@
+:root {
+    --strong-cyan: hsl(172, 67%, 45%);
+    --very-dark-cyan: hsl(183, 100%, 15%);
+    --dark-grayish-cyan: hsl(186, 14%, 43%);
+    --dark-grayish-cyan: hsl(184, 14%, 56%);
+    --light-grayish-cyan: hsl(185, 41%, 84%);
+    --light-grayish-cyan-secondary: hsl(189, 41%, 97%);
+
+    --main-font: 'Space Mono', sans-serif;
+}
+
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
+
+*, html {
+    font-family: var(--main-font);
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: var(--light-grayish-cyan);
+    height: 100vh;
+}
+
+.logo-container {
+    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.logo {
+    display: table;
+    margin: 0 auto;
+}
+
+.main-container {
+    margin: 0 auto;
+    width: 50%;
+    background-color: white;
+    border-radius: 20px;
+    padding: 25px;
+}
+
+.content-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 25px;
+    grid-template-areas: "calculator result";
+}
+
+.calculator-container {
+    grid-area: calculator;
+}
+
+.btn-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 10px;
+    grid-template-areas: 
+    ". . ."
+    ". . .";
+}
+
+.tip-amount-btn {
+    background-color: var(--very-dark-cyan);
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.tip-custom-btn {
+    background-color: var(--light-grayish-cyan-secondary);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--very-dark-cyan);
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.result-container {
+    grid-area: result;
+    border-radius: 20px;
+    background-color: var(--very-dark-cyan);
+    padding: 25px;
+}
+
+form {
+    position: relative;
+    width: 100%;
+}
+
+form > img {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input {
+    text-align: right;
+    outline: none;
+    padding: 10px;
+    background-color: var(--light-grayish-cyan-secondary);
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
