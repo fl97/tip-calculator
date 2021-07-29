@@ -88,13 +88,6 @@ body {
     cursor: pointer;
 }
 
-.result-container {
-    grid-area: result;
-    border-radius: 20px;
-    background-color: var(--very-dark-cyan);
-    padding: 25px;
-}
-
 form {
     position: relative;
     width: 100%;
@@ -122,4 +115,72 @@ input {
     border-radius: 5px;
     width: 100%;
     box-sizing: border-box;
+}
+
+.result-container {
+    grid-area: result;
+    border-radius: 20px;
+    background-color: var(--very-dark-cyan);
+    padding: 25px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    row-gap: 30px;
+    grid-template-areas: 
+        "cashbox-tip tip-amount"
+        "cashbox-total total-amount"
+        "empty empty"
+        "button button";
+}
+
+.cashbox {
+    text-align: end;
+    color: var(--strong-cyan);
+    font-weight: 700;
+    font-size: 34px;
+}
+
+.textbox-tip {
+    grid-area: cashbox-tip;
+}
+
+.textbox-total {
+    grid-area: cashbox-total;
+}
+
+.headline {
+    color: white;
+}
+
+.subtext {
+    color: var(--dark-grayish-cyan)
+}
+
+#cashbox-tip {
+    grid-area: tip-amount;
+}
+
+#cashbox-total {
+    grid-area: total-amount;
+}
+
+.tip-reset-btn {
+    grid-area: button;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--very-dark-cyan);
+}
+
+.inactive {
+    background-color: var(--dark-grayish-cyan);
+}
+
+.active {
+    background-color: var(--strong-cyan);
 }

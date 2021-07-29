@@ -28,7 +28,7 @@
 
         <form>
           <img src="images/icon-dollar.svg" alt="">
-          <input class="bill-input" type="number" placeholder="0">
+          <input class="bill-input" id="bill-input" type="number" placeholder="0" onkeyup="calculateTip()">
         </form>
 
         <p>Select Tip %</p>
@@ -45,18 +45,28 @@
         <p>Number of People</p>
         <form>
           <img src="images/icon-person.svg" alt="">
-          <input class="people-input" type="number" placeholder="1" min="1">
+          <input class="people-input" id="people-input" type="number" placeholder="1" min="1" onkeyup="calculateTip()">
         </form>
       </div>
 
       <div class="result-container">
-        Tip Amount
-        / person
+        <div class="textbox-tip">
+          <p class="headline">Tip Amount</p>
+          <p class="subtext">/ person</p>
+        </div>
+        
+        <div class="cashbox" id="cashbox-tip">
+        </div>
+        
+        <div class="textbox-total">
+          <p class="headline">Total</p>
+          <p class="subtext">/ person</p>
+        </div>
+        
+        <div class="cashbox" id="cashbox-total">
+        </div>
 
-        Total
-        / person
-
-        <button class="tip-reset-btn">Reset</button>
+        <button class="tip-reset-btn inactive">Reset</button>
       </div>
     </div>
   </main>
