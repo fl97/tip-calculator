@@ -28,18 +28,18 @@
 
         <form>
           <img src="images/icon-dollar.svg" alt="">
-          <input class="bill-input" id="bill-input" type="number" placeholder="0" onkeyup="calculateTip()">
+          <input class="bill-input" id="bill-input" type="number" placeholder="0" min="0" onkeyup="calculateTip()">
         </form>
 
         <p>Select Tip %</p>
 
         <div class="btn-container">
-          <button class="tip-amount-btn">5%</button>
-          <button class="tip-amount-btn">10%</button>
-          <button class="tip-amount-btn">15%</button>
-          <button class="tip-amount-btn">25%</button>
-          <button class="tip-amount-btn">50%</button>
-          <button class="tip-custom-btn">Custom</button>
+          <button class="tip-amount-btn" value="5">5%</button>
+          <button class="tip-amount-btn" value="10">10%</button>
+          <button class="tip-amount-btn" value="15">15%</button>
+          <button class="tip-amount-btn" value="25">25%</button>
+          <button class="tip-amount-btn" value="50">50%</button>
+          <button class="tip-custom-btn">Custom</button> <!-- change to input field that looks like a button-->
         </div>
 
         <p>Number of People</p>
