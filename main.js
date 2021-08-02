@@ -1,36 +1,62 @@
-document.getElementById('cashbox-tip').innerText = "$0.00"
-document.getElementById('cashbox-total').innerText = "$0.00"
-document.getElementById('people-input').value = 1
 
-let header = document.getElementsByClassName('btn-container')
-let buttons = document.getElementsByClassName('tip-amount-btn')
+const tipAmountLabel = document.querySelector('#tipAmountLabel')
+const totalLabel = document.querySelector('#totalLabel')
+const inputBill = document.querySelector('#inputBill')
+const inputPeople = document.querySelector('#peopleCount')
+const customTip = document.querySelector('#customTip')
+const tips = document.querySelectorAll('.options > button')
 
-for (var i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener("click", function () {
+const getBill = () => {
+    return parseFloat(inputBill.value)
+}
 
-        var current = document.getElementsByClassName("active")
+const getTip = () => {
+    const selected = document.querySelector('.selected')
+    let tip = 0
+    if (selected) {
+        tip = parseFloat(selected.dataset.tip)
+    } else if (isFinite(customTip.value)) {
+        tip = parseFloat(customTip.value)
+    }
+    return tip / 100
+}
 
-        if (current.length > 0) {
-            current[0].className = current[0].className.replace(" active", "")
-        }
+const getPeople = () => {
+    const peopleCount = inputPeople.value
+    const result = parseFloat(peopleCount)
+    if (isNaN(result)) return 1
+    return result
+}
 
-        this.className += " active"   
+const resetSelection = () => {
+    tips.forEach(tip => tip.classList.remove('selected'))
+}
 
+const compute = () => {
+
+    const bill = getBill()
+    const tip = getTip()
+    const people = getPeople()
+
+    const tipAmount = bill * tip / people
+    const total = bill / people + tipAmount
+
+    tipAmountLabel.textContent = `$${tipAmount.toFixed(2)}`
+    totalLabel.textContent = `$${total.toFixed(2)}`
+}
+
+inputBill.addEventListener('keyup', () => { compute() })
+inputPeople.addEventListener('keyup', () => { compute() })
+customTip.addEventListener('keyup', () => {
+    resetSelection()
+    compute()
+})
+
+tips.forEach(tip => {
+    tip.addEventListener('click', (e) => {
+        resetSelection()
+        customTip.value = ''
+        tip.classList.add('selected')
+        compute()
     })
-}
-
-console.log(document.querySelector('.active'))
-
-function calculateTip() {
-    let stringBill = document.getElementById('bill-input').value
-    let numberBill = parseFloat(stringBill)
-
-    let peopleStringAmount = document.getElementById('people-input').value
-    let peopleNumberAmount = parseInt(peopleStringAmount)
-    
-    let tipAmount = ((numberBill * 15) / 100) / peopleNumberAmount
-    document.getElementById('cashbox-tip').innerText = "$" + tipAmount.toFixed(2)
-
-    let totalAmount = (numberBill / peopleNumberAmount) + tipAmount
-    document.getElementById('cashbox-total').innerText = "$" + totalAmount.toFixed(2)
-}
+})
